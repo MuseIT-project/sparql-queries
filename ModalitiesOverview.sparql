@@ -1,0 +1,17 @@
++ endpoint: https://triplestore.coronawhy.org/disabilities/sparql
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX citation: <https://dataverse.org/schema/citation/>
+PREFIX ore: <http://www.openarchives.org/ore/1.0/terms/>
+SELECT ?id ?title ?description ?keyword
+WHERE {
+ ?id schema:name ?title;
+     citation:dsDescription ?descid;
+     citation:keyword ?keyid.
+ ?descid ?desctype ?description.
+ ?keyid ?k ?keyword
+}
+LIMIT 200
